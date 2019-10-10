@@ -6,7 +6,7 @@ Eureka是Netflix开发的服务发现框架，本身是一个基于REST的服务
 
 ### 架构图
 
-<img src="/Users/lipengguang/IdeaProjects/spring-cloud-notes/docs/assets/eureka架构图.png" alt="eureka架构图" style="zoom:100%;" />
+<img src="./assets/eureka架构图.png" alt="eureka架构图" style="zoom:100%;" />
 
 ### 说明
 
@@ -88,5 +88,5 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
 
    127.0.0.1       peer1 peer2
 
-   ![image-20191010144413267](/Users/lipengguang/IdeaProjects/spring-cloud-notes/docs/assets/image-20191010144413267.png)
+   ![image-20191010144413267](./assets/image-20191010144413267.png)
 
