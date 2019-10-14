@@ -1,8 +1,8 @@
 # Eureka
 
-Eureka是Netflix开发的服务发现框架，本身是一个基于REST的服务，主要用于定位运行在AWS域中的中间层服务，以达到负载均衡和中间层服务故障转移的目的。SpringCloud将它集成在其子项目spring-cloud-netflix中，以实现SpringCloud的服务发现功能。
-
 ## 简介
+
+Eureka是Netflix开发的服务发现框架，本身是一个基于REST的服务，主要用于定位运行在AWS域中的中间层服务，以达到负载均衡和中间层服务故障转移的目的。SpringCloud将它集成在其子项目spring-cloud-netflix中，以实现SpringCloud的服务发现功能。
 
 ### 架构图
 
@@ -90,3 +90,29 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
 
    ![image-20191010144413267](./assets/image-20191010144413267.png)
 
+### 将微服务注册到Eureka Server上
+
+1. 在微服务项目中添加以下依赖。
+
+   ```xml
+   <dependencies>
+       <dependency>
+           <groupId>org.springframework.cloud</groupId>
+           <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+       </dependency>
+   </dependencies>
+   ```
+
+2. 在配置文件application.yml中添加以下配置，
+
+   ```yml
+   eureka:
+     client:
+       serviceUrl:
+         defauleZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+     instance:
+     #    将自己的IP注册到eureka上，若为false，则注册微服务所在操作系统的hostname到eureka上
+       prefer-ip-address: true
+   ```
+
+3. 启动该服务，这样即可将微服务注册到Eureka Server上。

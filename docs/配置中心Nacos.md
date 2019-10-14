@@ -1,0 +1,29 @@
+# Nacos
+
+## 简介
+
+Nacos 支持基于 DNS 和基于 RPC 的服务发现（可以作为springcloud的注册中心）、动态配置服务（可以做配置中心）、动态 DNS 服务。
+
+官方介绍：
+
+> Nacos 致力于帮助您发现、配置和管理微服务。Nacos 提供了一组简单易用的特性集，帮助您实现动态服务发现、服务配置管理、服务及流量管理。
+> Nacos 帮助您更敏捷和容易地构建、交付和管理微服务平台。 Nacos 是构建以“服务”为中心的现代应用架构(例如微服务范式、云原生范式)的服务基础设施。
+
+官方网址：[http://nacos.io](http://nacos.io/)
+
+这里我们需要的是Nacos作为配置中心的功能。
+
+## 安装
+
+参考官方文档：[Nacos快速开始](https://nacos.io/zh-cn/docs/quick-start.html)
+
+1. 下载最新稳定版本Nacos：
+
+   > unzip nacos-server-\$version.zip 或者 tar -xvf nacos-server-​\$version.tar.gz
+   >   cd nacos/bin
+
+2. 启动
+
+   > sh startup.sh -m standalone
+
+   程序启动默认占用端口：8848。
