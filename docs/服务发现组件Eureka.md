@@ -62,6 +62,8 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
      client:
        serviceUrl:
          defauleZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+       healthcheck:
+         enabled: true
    
    ---
    spring:
@@ -103,16 +105,95 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
    </dependencies>
    ```
 
-2. 在配置文件application.yml中添加以下配置，
+2. 在配置文件application.yml中添加以下配置。
 
    ```yml
    eureka:
      client:
        serviceUrl:
          defauleZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+       healthcheck:
+         # 开启健康检查
+         enabled: true
      instance:
-     #    将自己的IP注册到eureka上，若为false，则注册微服务所在操作系统的hostname到eureka上
+       # 将自己的IP注册到eureka上，若为false，则注册微服务所在操作系统的hostname到eureka上
        prefer-ip-address: true
+       # 自定义实例id，配置前192.168.13.111:provider-user:8002，配置后provider-user:192.168.13.111:8002
+       # 默认${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id}:${service.port}
+       instance-id: ${spring.application.name}:${spring.cloud.client.ipaddress}:${server.port}
+       # 自定义实例跳转链接
+       status-page-url: https://github.com/yiddie
+       # 发送心跳给server端的频率 （开发环境开启，默认30秒）
+       lease-renewal-interval-in-seconds: 5
+       # server至上一次收到心跳之后，等待下一次心跳的超时时间，超时未收到心跳，移除instance （开发环境开启，默认90秒）
+       lease-expiration-duration-in-seconds: 5
    ```
 
 3. 启动该服务，这样即可将微服务注册到Eureka Server上。
+
+### 常用配置说明
+
+1. 关闭自我保护。
+
+   ```yml
+   eureka:
+     server:
+       #关闭自我保护，开发环境下关闭
+       enable-self-preservation: false
+   ```
+
+2. 自定义Eureka实例id。
+
+   ```yml
+   eureka:
+     instance:
+       # 自定义实例id，配置前192.168.13.111:provider-user:8002，配置后provider-user:192.168.13.111:8002
+       # 默认${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id}:${service.port}
+       instance-id: ${spring.application.name}:${spring.cloud.client.ipaddress}:${server.port}
+   ```
+
+3. 自定义示例跳转链接。
+
+   ```yml
+   eureka:
+     instance:
+       # 自定义实例跳转链接
+       status-page-url: https://github.com/yiddie
+   ```
+
+4. 快速移除已失效服务信息（建议只在开发环境使用）。
+
+   - Eureka Server侧
+
+     ```yml
+     eureka:
+       server:
+         #清理间隔，默认60000ms，开发环境下修改为5000ms
+         eviction-interval-timer-in-ms: 5000
+         #节点间读数据连接超时时间
+         peer-node-read-timeout-ms: 200
+     ```
+
+   - Eureka Client侧
+
+     ```yml
+     eureka:
+     	client:
+       	healthcheck:
+         	enabled: true
+       instance:
+       	# 发送心跳给server端的频率 （开发环境开启，默认30秒）
+         lease-renewal-interval-in-seconds: 5
+         # server至上一次收到心跳之后，等待下一次心跳的超时时间，超时未收到心跳，移除instance （开发环境开启，默认90秒）
+         lease-expiration-duration-in-seconds: 5
+     ```
+
+   - healthcheck需要引入依赖。
+
+     ```xml
+     <dependency>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-actuator</artifactId>
+     </dependency>
+     ```
+
