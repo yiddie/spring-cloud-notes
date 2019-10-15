@@ -178,10 +178,7 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
 
      ```yml
      eureka:
-       client:
-       	healthcheck:
-         	enabled: true
-       instance:
+  instance:
          # 发送心跳给server端的频率 （开发环境开启，默认30秒）
          lease-renewal-interval-in-seconds: 5
          # server至上一次收到心跳之后，等待下一次心跳的超时时间，超时未收到心跳，移除instance （开发环境开启，默认90秒）
@@ -189,11 +186,10 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
      ```
 
    - healthcheck需要引入依赖。
-
+   
      ```xml
      <dependency>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-starter-actuator</artifactId>
      </dependency>
      ```
-
