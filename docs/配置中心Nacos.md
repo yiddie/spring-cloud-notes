@@ -34,7 +34,8 @@ Nacos 支持基于 DNS 和基于 RPC 的服务发现（可以作为springcloud�
    - 下载[最新稳定版本](https://github.com/alibaba/nacos/releases)Nacos后解压。
 
      >unzip nacos-server-\$version.zip 或者 tar -xvf nacos-server-\$version.tar.gz
-     >  cd nacos/bin
+     >
+     >cd nacos/bin
 
 2. 启动
 
@@ -53,3 +54,4 @@ Nacos 支持基于 DNS 和基于 RPC 的服务发现（可以作为springcloud�
    >账号密码：nacos/nacos
 
 2. 
+
