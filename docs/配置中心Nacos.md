@@ -53,5 +53,30 @@ Nacos 支持基于 DNS 和基于 RPC 的服务发现（可以作为springcloud�
    >
    >账号密码：nacos/nacos
 
-2. 
+2. 进入配置列表，新建配置。
+
+   ![741C14B2-84FA-438C-BB38-F9A698034C02](./assets/nacos配置1.png)
+
+   ![573F0A2B-EC14-4FE7-B17C-1C2FAF2CF776](./assets/nacos配置2.png)
+
+3. 在项目的配置文件bootstrap.yml中添加如下配置。
+
+   ```yml
+   spring:
+     cloud:
+       nacos:
+         config:
+           server-addr: 127.0.0.1:9090
+           file-extension: yaml
+           namespace: fbae2fdb-6c38-478b-b153-f32768398edd
+           group: yiddie-spring-cloud
+           #        共享配置
+           ext-config:
+             - data-id: yiddie-postgres.yaml
+               group: yiddie-spring-cloud
+               namespace: fbae2fdb-6c38-478b-b153-f32768398edd
+               refresh: true
+   ```
+
+   
 
