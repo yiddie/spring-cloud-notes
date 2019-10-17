@@ -29,6 +29,7 @@
 
     <modules>
         <module>spring-cloud-notes-eureka</module>
+        <module>spring-cloud-notes-userservice</module>
     </modules>
 
     <dependencies>

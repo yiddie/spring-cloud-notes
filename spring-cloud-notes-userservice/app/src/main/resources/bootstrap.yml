@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:9090
+        file-extension: yaml
+        namespace: fbae2fdb-6c38-478b-b153-f32768398edd
+        group: yiddie-spring-cloud
+        #          共享配置
+        ext-config:
+          - data-id: yiddie-postgres.yaml
+            group: yiddie-spring-cloud
+            namespace: fbae2fdb-6c38-478b-b153-f32768398edd
+            refresh: true
