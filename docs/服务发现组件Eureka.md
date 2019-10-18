@@ -61,7 +61,7 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
        peer-node-read-timeout-ms: 200
      client:
        serviceUrl:
-         defauleZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+         defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
        healthcheck:
          enabled: true
    
@@ -91,6 +91,10 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
    127.0.0.1       peer1 peer2
 
    ![image-20191010144413267](./assets/image-20191010144413267.png)
+   
+5. idea启动集群部署的Eureka Server。
+
+   ![BE6F9A6E-CB49-4F14-A746-73630DB18114](/Users/lipengguang/IdeaProjects/spring-cloud-notes/docs/assets/idea启动eureka集群.png)
 
 ### 将微服务注册到Eureka Server上
 
@@ -111,7 +115,7 @@ Eureka包含两个组件：Eureka Server 和 Eureka Client。
    eureka:
      client:
        serviceUrl:
-         defauleZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+         defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
        healthcheck:
          # 开启健康检查
          enabled: true

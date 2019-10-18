@@ -57,7 +57,7 @@ Nacos 支持基于 DNS 和基于 RPC 的服务发现（可以作为springcloud�
 
    ![741C14B2-84FA-438C-BB38-F9A698034C02](./assets/nacos配置1.png)
 
-   ![573F0A2B-EC14-4FE7-B17C-1C2FAF2CF776](./assets/nacos配置2.png)
+   ![28A5E345-3B9C-46AE-B988-026E24C7E95A](./assets/nacos配置2.png)
 
 3. 在项目的配置文件bootstrap.yml中添加如下配置。
 

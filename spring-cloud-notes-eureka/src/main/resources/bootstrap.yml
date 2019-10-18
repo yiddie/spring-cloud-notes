@@ -1,0 +1,37 @@
+eureka:
+  server:
+    #关闭自我保护，开发环境下关闭
+    enable-self-preservation: false
+    #清理间隔，默认60000ms，开发环境下修改为5000ms
+    eviction-interval-timer-in-ms: 60000
+    #节点间读数据连接超时时间
+    peer-node-read-timeout-ms: 200
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8762/eureka/,http://peer1:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    # 将自己的IP注册到eureka上，若为false，则注册微服务所在操作系统的hostname到eureka上
+    prefer-ip-address: true
+    # 自定义实例id，配置前192.168.13.111:provider-user:8002，配置后provider-user:192.168.13.111:8002
+    # 默认${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id}:${service.port}
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipaddress}:${server.port}
+
+---
+spring:
+  profiles: peer1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer1
+
+---
+spring:
+  profiles: peer2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: peer2
