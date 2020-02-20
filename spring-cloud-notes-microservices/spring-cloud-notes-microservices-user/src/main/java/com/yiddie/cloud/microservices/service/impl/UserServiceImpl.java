@@ -7,6 +7,7 @@ import com.yiddie.cloud.microservices.model.cloud.User;
 import com.yiddie.cloud.microservices.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 

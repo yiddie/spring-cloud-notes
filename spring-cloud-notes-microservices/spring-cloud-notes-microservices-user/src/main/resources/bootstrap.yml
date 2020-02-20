@@ -16,7 +16,7 @@ spring:
             group: yiddie-spring-cloud
             namespace: fbae2fdb-6c38-478b-b153-f32768398edd
             refresh: true
-          - data-id: yiddie-eureka.yaml
+          - data-id: yiddie-eureka .yaml
             group: yiddie-spring-cloud
             namespace: fbae2fdb-6c38-478b-b153-f32768398edd
             refresh: true
